@@ -30,3 +30,17 @@ postCadastroCarroR = do
                     |]
                     redirect HomeR
                 _ -> redirect HomeR
+                
+getCadastroCarroR :: Handler Html
+getCadastroCarroR = do
+           (widget, enctype) <- generateFormPost formCarro
+           defaultLayout [whamlet|
+             <form method=post action=@{CadastroCarroR} enctype=#{enctype}>
+                 ^{widget}
+                 <input type="submit" value="Cadastrar">
+           |]
+        
+postCarroR :: CarroId -> Handler Html
+postCarroR pid = do
+     runDB $ delete pid
+     redirect ListCarroR
