@@ -117,9 +117,7 @@ postCadastroFuncionarioR = do
             case result of
                 FormSuccess funcionario -> do
                     pid <- runDB $ insert funcionario
-                    defaultLayout [whamlet|
-                        Funcionário cadastrado com sucesso #{fromSqlKey pid}!
-                    |]
+                    redirect ListFuncionarioR
                 _ -> redirect HomeR
 
 

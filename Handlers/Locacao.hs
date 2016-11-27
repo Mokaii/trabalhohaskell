@@ -46,9 +46,7 @@ postCadastroLocacaoR = do
             case result of
                 FormSuccess locacao -> do
                     pid <- runDB $ insert locacao
-                    defaultLayout [whamlet|
-                        Locação cadastrada com sucesso #{fromSqlKey pid}!
-                    |]
+                    redirect ListLocacaoR
                 _ -> redirect HomeR
                 
 getListLocacaoR :: Handler Html

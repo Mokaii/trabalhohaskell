@@ -109,9 +109,7 @@ postCadastroClienteR = do
             case result of
                 FormSuccess cliente -> do
                     pid <- runDB $ insert cliente
-                    defaultLayout [whamlet|
-                        Cliente cadastrado com sucesso #{fromSqlKey pid}!
-                    |]
+                    redirect ListClienteR 
                 _ -> redirect HomeR
 
 postClienteR :: ClienteId -> Handler Html

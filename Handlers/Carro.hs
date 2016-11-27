@@ -110,10 +110,7 @@ postCadastroCarroR = do
             case result of
                 FormSuccess carro -> do
                     pid <- runDB $ insert carro
-                    defaultLayout [whamlet|
-                        Carro cadastrado com sucesso #{fromSqlKey pid}!
-                    |]
-                    redirect HomeR
+                    redirect ListCarroR
                 _ -> redirect HomeR
                 
         

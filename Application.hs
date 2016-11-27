@@ -62,7 +62,7 @@ getHomeR  = defaultLayout $ do
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href=@{HomeR}>Home
+                            <li class="active"><a href=@{LogoutR}>Logout
                             <li><a href=@{CadastroCarroR}>Cadastrar Carro
                             <li><a href=@{CadastroFuncionarioR}>Cadastrar Funcionario
                             <li><a href=@{CadastroClienteR}>Cadastrar Cliente
