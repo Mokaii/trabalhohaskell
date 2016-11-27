@@ -1,0 +1,15 @@
+/                                   HomeR                GET
+/cliente/cadastro                   CadastroClienteR     GET POST
+/cliente/listar                     ListClienteR         GET
+/perfil/cliente/#ClienteId          ClienteR             GET POST
+/funcionario/cadastro               CadastroFuncionarioR GET POST
+/funcionario/listar                 ListFuncionarioR     GET 
+/perfil/funcionario/#FuncionarioId  FuncionarioR         GET POST 
+/carro/cadastro                     CadastroCarroR       GET POST
+/carro/listar                       ListCarroR           GET
+/perfil/carro/#CarroId              CarroR               GET POST
+/locacao/cadastro                   CadastroLocacaoR     GET POST
+/locacao/listar                     ListLocacaoR         GET
+/perfil/locacao/#LocacaoId          LocacaoR             GET
+/login                              LoginR               GET POST
+/logout                             LogoutR              POST
