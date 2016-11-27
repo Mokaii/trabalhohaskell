@@ -53,3 +53,24 @@ instance YesodPersist Sitio where
        master <- getYesod
        let pool = connPool master
        runSqlPool f pool
+
+instance Yesod Sitio where
+    authRoute _ = Just LoginR
+    
+    isAuthorized LoginR _ = return Authorized
+    isAuthorized CadastroFuncionarioR _ = return Authorized
+    isAuthorized _ _ = estaAutenticado
+
+
+estaAutenticado :: Handler AuthResult
+estaAutenticado = do
+   msu <- lookupSession "_ID"
+   case msu of
+       Just _ -> return Authorized
+       Nothing -> return AuthenticationRequired
+
+type Form a = Html -> MForm Handler (FormResult a, Widget)
+
+instance RenderMessage Sitio FormMessage where
+    renderMessage _ _ = defaultFormMessage
+    
