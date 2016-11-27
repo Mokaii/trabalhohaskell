@@ -86,3 +86,42 @@ getListLocacaoR = do
                                      <td><a href=@{HomeR}><button type="button" class="btn-warning">Voltar
 
                 |]
+                                
+getLocacaoR :: LocacaoId -> Handler Html
+getLocacaoR pid = do
+             locacao <- runDB $ get404 pid 
+             funcionario <- runDB $ get404 (locacaoId_func locacao)
+             cliente <- runDB $ get404 (locacaoId_cliente locacao)
+             carro <- runDB $ get404 (locacaoId_carro locacao)
+             defaultLayout [whamlet| 
+                <head>
+                  <title>LOCACOES</title>
+                  <meta charset="utf-8">
+                  <meta name="viewport" content="width=device-width, initial-scale=1">
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                <body>
+                    <div class="container">
+                        <div class="jumbotron">
+                            <h3 style="text-align:center; align:center;"><center>Voce esta consultando a locacao: <b>#{fromSqlKey pid}
+                    <div class="container" style="background-color:#ad4f4 text-align:center;" >
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>ID
+                            <th>Funcionario
+                            <th>Cliente
+                            <th>Carro
+                            <th>Data da locacao
+                            <th>Duracao da locacao
+                            <th>Deseja Voltar?
+                          <tr>
+                            <td><a href=@{LocacaoR pid}>#{fromSqlKey pid}
+                            <td>#{funcionarioNm_funcionario funcionario}
+                            <td>#{clienteNm_cliente cliente}
+                            <td>#{carroModelo_carro carro}
+                            <td>#{locacaoDt_locacao locacao}
+                            <td>#{locacaoQtd_dias_locacao locacao}
+                            <td><a href=@{ListLocacaoR}><button type="button" class="btn-warning">Voltar
+             |]
