@@ -50,3 +50,39 @@ postCadastroLocacaoR = do
                         Locação cadastrada com sucesso #{fromSqlKey pid}!
                     |]
                 _ -> redirect HomeR
+                
+getListLocacaoR :: Handler Html
+getListLocacaoR = do
+            locacoes <- runDB $ selectList [] [Asc LocacaoDt_locacao]
+            defaultLayout $ do
+                [whamlet|
+                    <head>
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                        <title>Consulta de locacao</title>
+
+                    <body>
+                        <div class="container">
+                            <div class="jumbotron">
+                                <h3 style="text-align:center; align:center;">LOCACOES
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID
+                                    <th>Data da locacao
+                                    <th>Duracao da locacao
+                                    <th>Deseja Voltar?
+
+                         $forall Entity pid locacao <- locacoes
+                             <tbody>
+                                 <tr>
+                                     <td><a href=@{LocacaoR pid}> #{fromSqlKey pid}
+                                     <td>#{locacaoDt_locacao locacao}
+                                     <td>#{locacaoQtd_dias_locacao locacao}
+                                     <td><a href=@{HomeR}><button type="button" class="btn-warning">Voltar
+
+                |]
