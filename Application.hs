@@ -45,6 +45,12 @@ getHomeR  = defaultLayout $ do
           overflow: hidden;
           background-color: #e5e5e5;
         }
+        
+        img, button{
+            margin:auto;
+        }
+
+
     |]
     [whamlet|
         <head>
@@ -54,28 +60,35 @@ getHomeR  = defaultLayout $ do
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-            <div class="container">
-                    <img src="http://4.bp.blogspot.com/-BehfOLqhAXc/VL-6xhFf3DI/AAAAAAAAAhY/VUiOOdDUUbs/s1600/Loca%C3%A7%C3%A3o%2Bde%2Bcarro.jpg" style="max-width:1138px;">
+            <div class="container-fluid">
+                        <img class="page-header center-block" src="https://i.sli.mg/8xsU0p.png" style="max-width:1138px;">
        
         <body>
-            <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="300">
+            <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href=@{LogoutR}>Logout
-                            <li><a href=@{CadastroCarroR}>Cadastrar Carro
-                            <li><a href=@{CadastroFuncionarioR}>Cadastrar Funcionario
-                            <li><a href=@{CadastroClienteR}>Cadastrar Cliente
-                            <li><a href=@{CadastroLocacaoR}>Registrar Aluguel
+                        $maybe _ <- sess
+                            <li>
+                                <form action=@{LogoutR} method=post>
+                                    <input class="navbar-brand" type="submit" value="Logout">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href=@{CadastroCarroR}>Cadastrar Carro
+                        <li>
+                            <a href=@{CadastroFuncionarioR}>Cadastrar Funcionario
+                        <li>
+                            <a href=@{CadastroClienteR}>Cadastrar Cliente
+                        <li>
+                            <a href=@{CadastroLocacaoR}>Registrar Aluguel
         
        <div class="panel-content">
-           <table class="table table-striped">
-                   <thead>
-                       <tr>
-                           <th><a href=@{ListClienteR}><button type="button" class="btn-mini">Consultar Clientes
-                           <th><a href=@{ListFuncionarioR}><button type="button" class="btn-default">Consultar Funcionarios
-                           <th><a href=@{ListCarroR}><button type="button" class="btn-info">Consultar Carros
-                           <th><a href=@{ListLocacaoR}><button type="button" class="btn-warning">Consultar Alugueis
-                
-                
+            <div class="col-md-3">
+                <a href=@{ListClienteR}><button type="button" class="btn-mini">Consultar Clientes
+            <div class="col-md-3">
+                <a href=@{ListFuncionarioR}><button type="button" class="btn-default">Consultar Funcionarios
+            <div class="col-md-3">
+                <a href=@{ListCarroR}><button type="button" class="btn-info">Consultar Carros
+            <div class="col-md-3">
+                <a href=@{ListLocacaoR}><button type="button" class="btn-warning">Consultar Alugueis
+
     |]
