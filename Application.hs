@@ -46,7 +46,7 @@ getHomeR  = defaultLayout $ do
           background-color: #e5e5e5;
         }
         
-        img, button{
+        img, button, input{
             margin:auto;
         }
 
@@ -70,7 +70,7 @@ getHomeR  = defaultLayout $ do
                         $maybe _ <- sess
                             <li>
                                 <form action=@{LogoutR} method=post>
-                                    <input class="navbar-brand" type="submit" value="Logout">
+                                    <input class="btn btn-default" type="submit" value="Logout">
                     <ul class="nav navbar-nav">
                         <li>
                             <a href=@{CadastroCarroR}>Cadastrar Carro
@@ -83,12 +83,12 @@ getHomeR  = defaultLayout $ do
         
        <div class="panel-content">
             <div class="col-md-3">
-                <a href=@{ListClienteR}><button type="button" class="btn-mini">Consultar Clientes
+                <a href=@{ListClienteR}><button type="button" class="center-block btn-mini">Consultar Clientes
             <div class="col-md-3">
-                <a href=@{ListFuncionarioR}><button type="button" class="btn-default">Consultar Funcionarios
+                <a href=@{ListFuncionarioR}><button type="button" class="center-block btn-mini">Consultar Funcionarios
             <div class="col-md-3">
-                <a href=@{ListCarroR}><button type="button" class="btn-info">Consultar Carros
+                <a href=@{ListCarroR}><button type="button" class="center-block btn-mini">Consultar Carros
             <div class="col-md-3">
-                <a href=@{ListLocacaoR}><button type="button" class="btn-warning">Consultar Alugueis
+                <a href=@{ListLocacaoR}><button type="button" class="center-block btn-mini">Consultar Alugueis
 
     |]

@@ -14,10 +14,10 @@ import Database.Persist
 formFuncionario :: Form Funcionario
 formFuncionario = renderDivs $ Funcionario <$>
             areq textField "Nome" Nothing <*>
-            areq textField "Senha" Nothing <*>
+            areq passwordField "Senha" Nothing <*>
             areq textField "Cargo" Nothing <*>
             areq textField "CPF" Nothing <*>
-            areq textField "Email" Nothing <*>
+            areq emailField "Email" Nothing <*>
             areq textField "Data Nascimento" Nothing 
 
 
@@ -95,7 +95,6 @@ getListFuncionarioR = do
                                     <th>CPF
                                     <th>Email
                                     <th>Data Nascimento
-                                    <th>Deseja Voltar?
 
                          $forall Entity pid funcionario <- funcionarios
                              <tbody>
@@ -106,7 +105,7 @@ getListFuncionarioR = do
                                      <td>#{funcionarioCpf_funcionario funcionario}
                                      <td>#{funcionarioEmail_funcionario funcionario}
                                      <td>#{funcionarioDt_nascimento funcionario}
-                                     <td><a href=@{HomeR}><button type="button" class="btn-warning">Voltar
+                    <a href=@{HomeR}><button type="button" class="btn-warning">Voltar
 
                 |]
 

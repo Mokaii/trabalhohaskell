@@ -90,7 +90,6 @@ getListClienteR =  do
                                     <th>CPF
                                     <th>Data de nascimento
                                     <th>Email
-                                    <th>Deseja Voltar?
 
                          $forall Entity pid cliente <- clientes
                              <tbody>
@@ -100,7 +99,7 @@ getListClienteR =  do
                                      <td>#{clienteCpf_cliente cliente}
                                      <td>#{clienteDt_nascimento cliente}
                                      <td>#{clienteEmail_cliente cliente}
-                                     <td><a href=@{HomeR}><button type="button" class="btn-warning">Voltar
+                    <a href=@{HomeR}><button type="button" class="btn-warning">Voltar
                 |]
 
 postCadastroClienteR :: Handler Html

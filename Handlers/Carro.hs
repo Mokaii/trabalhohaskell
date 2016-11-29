@@ -90,7 +90,6 @@ getListCarroR = do
                                     <th>Ano
                                     <th>Placa
                                     <th>Valor Diária
-                                    <th>Deseja Voltar?
 
                          $forall Entity pid carro <- carros
                              <tbody>
@@ -100,7 +99,7 @@ getListCarroR = do
                                      <td>#{carroAno_carro carro}
                                      <td>#{carroPlaca_carro carro}
                                      <td>#{carroValor_diaria carro}
-                                     <td><a href=@{HomeR}><button type="button" class="btn-warning">Voltar
+                    <a href=@{HomeR}><button type="button" class="btn-warning">Voltar
 
                 |]
 

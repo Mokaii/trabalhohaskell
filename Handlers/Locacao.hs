@@ -73,7 +73,6 @@ getListLocacaoR = do
                                     <th>ID
                                     <th>Data da locacao
                                     <th>Duracao da locacao
-                                    <th>Deseja Voltar?
 
                          $forall Entity pid locacao <- locacoes
                              <tbody>
@@ -81,7 +80,7 @@ getListLocacaoR = do
                                      <td><a href=@{LocacaoR pid}> #{fromSqlKey pid}
                                      <td>#{locacaoDt_locacao locacao}
                                      <td>#{locacaoQtd_dias_locacao locacao}
-                                     <td><a href=@{HomeR}><button type="button" class="btn-warning">Voltar
+                    <a href=@{HomeR}><button type="button" class="btn-warning">Voltar
 
                 |]
                                 
